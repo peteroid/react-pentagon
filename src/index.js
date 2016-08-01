@@ -3,6 +3,6 @@ var ReactDom = require('react-dom')
 var Main = require('./components/Main')
 
 ReactDom.render(
-  Main,
+  <Main />,
   document.getElementById('app')
 )

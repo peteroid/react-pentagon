@@ -1,0 +1,36 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px;
+}
+
+.main > section {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.main > section > h1 {
+  margin: 20px 0 10px;
+  font-weight: lighter;
+}
+
+.my-pentagon-1 {
+  transition: all 0.3s ease;
+
+  -webkit-filter: drop-shadow(0px 1px 0px #947128)
+                  drop-shadow(0px 2px 0px #7A5811)
+                  drop-shadow(0px 3px 0px #6B5016)
+                  drop-shadow(0px 4px 9px rgba(64, 46, 8, 0.6));
+  filter: drop-shadow(0px 1px 0px #947128)
+                  drop-shadow(0px 2px 0px #7A5811)
+                  drop-shadow(0px 3px 0px #6B5016)
+                  drop-shadow(0px 4px 9px rgba(64, 46, 8, 0.6));
+}
+
+.my-pentagon-1:hover {
+  -webkit-filter: drop-shadow( 0px 1px 0px #947128 )
+                  drop-shadow( 0px 2px 0px #7A5811 )
+                  drop-shadow( 0px 3px 5px rgba(64, 46, 8, 0.5));
+  filter: drop-shadow( 0px 1px 0px #947128 )
+                  drop-shadow( 0px 2px 0px #7A5811 )
+                  drop-shadow( 0px 3px 5px rgba(64, 46, 8, 0.5));
+}
