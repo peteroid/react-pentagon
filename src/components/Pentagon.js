@@ -3,8 +3,7 @@ var React = require('react')
 var Pentagon = React.createClass({
   propTypes: {
     size: React.PropTypes.number,
-    fill: React.PropTypes.string,
-    className: React.PropTypes.string
+    fill: React.PropTypes.string
   },
   getDefaultProps: function () {
     return {
@@ -66,7 +65,7 @@ var Pentagon = React.createClass({
   },
   render: function() {
     return (
-      <svg width={this.props.size} height={this.props.size} className={this.props.className}>
+      <svg width={this.props.size} height={this.props.size} {...this.props}>
         <polygon points={this.caluatePoints(this.props.size)} fill={this.props.fill}/>
       </svg>
     )
