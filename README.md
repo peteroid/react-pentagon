@@ -9,6 +9,13 @@ A simple react add-on to help drawing the svg pentagon.
 - `npm run webpack`
 
 # Props
-- size : number
-- fill : string
+name : propType = defaultValue
 
+## Basic
+- size : number = 50
+- fill : string = "#ad893e"
+- ratio : [number] = [1, 1, 1, 1, 1]
+
+## Animation
+- isAnimating : bool = true
+- duration : number = 1000
