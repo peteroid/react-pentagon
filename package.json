@@ -1,8 +1,8 @@
 {
   "name": "react-pentagon",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "A simple react add-on to help drawing the svg pentagon.",
-  "main": "./build/app.js",
+  "main": "./dist/Pentagon.js",
   "scripts": {
     "webpack": "./node_modules/.bin/webpack"
   },
