@@ -9,7 +9,7 @@ var Main = React.createClass({
           <h1>
             {"size={number}"}
           </h1>
-          <Pentagon size={100} />
+          <Pentagon size={50} />
         </section>
         <section>
           <h1>

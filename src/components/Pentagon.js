@@ -3,12 +3,14 @@ var React = require('react')
 var Pentagon = React.createClass({
   propTypes: {
     size: React.PropTypes.number,
-    fill: React.PropTypes.string
+    fill: React.PropTypes.string,
+    ratio: React.PropTypes.arrayOf(React.PropTypes.number)
   },
   getDefaultProps: function () {
     return {
       size: 50,
-      fill: "#ad893e"
+      fill: "#ad893e",
+      ratio: [1, 1, 1, 1, 1]
     }
   },
   getInitialState: function () {
@@ -18,8 +20,6 @@ var Pentagon = React.createClass({
     return deg /180 * Math.PI
   },
   caluatePoints: function (size, ratios) {
-    if (!ratios)
-      ratios = [1.0, 1.0, 1.0, 1.0, 1.0]
     var x = size / 2
     var _36R = this.toRadian(36)
     var _18R = this.toRadian(18)
@@ -65,8 +65,8 @@ var Pentagon = React.createClass({
   },
   render: function() {
     return (
-      <svg width={this.props.size} height={this.props.size} {...this.props}>
-        <polygon points={this.caluatePoints(this.props.size)} fill={this.props.fill}/>
+      <svg width={this.props.size} height={this.props.size} className={this.props.className}>
+        <polygon points={this.caluatePoints(this.props.size, this.props.ratio)} fill={this.props.fill}/>
       </svg>
     )
   }
