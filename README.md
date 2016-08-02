@@ -12,7 +12,7 @@ npm install react-pentagon --save
 ```javascript
 var Pentagon = require('react-pentagon')
 
-# add this to your components
+// add this to your components
 <Pentagon />
 ```
 
