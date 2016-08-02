@@ -105,7 +105,7 @@ var Pentagon = React.createClass({
             attributeName="points" 
             from={this.state.oldPoints}
             to={this.state.newPoints}
-            dur={this.props.duration + "ms"}
+            dur={this.props.duration * 1.05 + "ms"}
             begin="indefinite" />
         </polygon>
       </svg>

@@ -17,6 +17,10 @@ section {
   font-weight: lighter;
 }
 
+.container {
+  position: relative;
+}
+
 .my-pentagon-1 {
   transition: all 0.5s ease;
 }
@@ -52,6 +56,10 @@ section {
 
 .my-pentagon-2 {
   position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
 }
 
 .my-pentagon-2 polygon {

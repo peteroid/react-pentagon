@@ -13,13 +13,14 @@ var Main = React.createClass({
   },
   getInitialState: function () {
     return {
-      ratio: [1, 1, 1, 1, 1]
+      ratio: [1, 1, 1, 1, 1],
+      duration: 777
     }
   },
   componentDidMount: function () {
     setInterval(function () {
       this.randomizeRatio()
-    }.bind(this), 2000)
+    }.bind(this), this.state.duration)
   },
   render: function () {
     return (
@@ -28,9 +29,16 @@ var Main = React.createClass({
           <h1>
             {"ratio={[number]}"}
           </h1>
-          <Pentagon ratio={this.state.ratio} isAnimating={true} size={150}
-            fill={"#E6B95A"} duration={500} className="my-pentagon-2"/>
-          <Pentagon size={150} fill="#A1EDDB" className="my-pentagon-3"/>
+          <div className="container">
+            <Pentagon ratio={this.state.ratio} isAnimating={true} size={150}
+              fill={"#E6B95A"} duration={this.state.duration / 2} className="my-pentagon-2"/>
+            <Pentagon size={150} fill="#A1EDDB" className="my-pentagon-3"/>
+          </div>
+          <label>
+            {"Speed: "}
+            <input type="number" value={this.state.duration}
+              onChange={e => this.setState({duration: e.target.value})} />
+          </label>
         </section>
         <section>
           <h1>
