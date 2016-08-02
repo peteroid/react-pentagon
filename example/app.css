@@ -3,6 +3,10 @@ body {
   padding: 20px;
 }
 
+section {
+  position: relative;
+}
+
 .main > section {
   margin: 40px auto;
   text-align: center;
@@ -44,4 +48,16 @@ body {
     0%    {fill: #359E2F;}
     50%   {fill: #29C2BF;}
     100%  {fill: #359E2F;}
+}
+
+.my-pentagon-2 {
+  position: absolute;
+}
+
+.my-pentagon-2 polygon {
+  transition: all 1s ease;
+}
+
+.my-pentagon-3 {
+  opacity: 0.3;
 }

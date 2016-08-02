@@ -4,17 +4,49 @@ var Pentagon = React.createClass({
   propTypes: {
     size: React.PropTypes.number,
     fill: React.PropTypes.string,
-    ratio: React.PropTypes.arrayOf(React.PropTypes.number)
+    ratio: React.PropTypes.arrayOf(React.PropTypes.number),
+    isAnimating: React.PropTypes.bool,
+    duration: React.PropTypes.number
   },
   getDefaultProps: function () {
     return {
       size: 50,
       fill: "#ad893e",
-      ratio: [1, 1, 1, 1, 1]
+      ratio: [1, 1, 1, 1, 1],
+      isAnimating: true,
+      duration: 1000
     }
   },
   getInitialState: function () {
-    return {}
+    var points = this.caluatePoints(this.props.size, this.props.ratio)
+    return {
+      newPoints: points,
+      oldPoints: points,
+      polygonAnimate: null
+    }
+  },
+  componentWillReceiveProps: function(nextProps) {
+    var newPoints = this.caluatePoints(nextProps.size || this.props.size, nextProps.ratio || this.props.ratio)
+    var isChanged = false
+    for (var i = 0; i < newPoints.length; i++) {
+      if (this.state.oldPoints[i][0] != newPoints[i][0] ||
+        this.state.oldPoints[i][1] != newPoints[i][1]) {
+        isChanged = true
+        break
+      }
+    }
+    if (isChanged) {
+      this.setState({
+        newPoints: newPoints
+      }, function () {
+        this._animate.beginElement()
+        setTimeout(function () {
+          this.setState({
+            oldPoints: newPoints
+          })
+        }.bind(this), this.props.isAnimating ? this.props.duration : 0)
+      })
+    }
   },
   toRadian: function (deg) {
     return deg /180 * Math.PI
@@ -47,7 +79,7 @@ var Pentagon = React.createClass({
       }
     ]
 
-    var c = this.caluateMidPoint()
+    var c = this.caluateMidPoint(x)
 
     var returnPoints = points.map((p, index) => {
       return [
@@ -57,16 +89,25 @@ var Pentagon = React.createClass({
     })
     return returnPoints
   },
-  caluateMidPoint: function () {
+  caluateMidPoint: function (x) {
     return {
-      cx: this.props.size,
-      cy: this.props.size / Math.cos(this.toRadian(36)) / Math.sin(this.toRadian(72)) * Math.sin(this.toRadian(54))
+      cx: x,
+      cy: x / Math.cos(this.toRadian(36)) / Math.sin(this.toRadian(72)) * Math.sin(this.toRadian(54))
     }
   },
   render: function() {
     return (
       <svg width={this.props.size} height={this.props.size} className={this.props.className}>
-        <polygon points={this.caluatePoints(this.props.size, this.props.ratio)} fill={this.props.fill}/>
+        <polygon points={this.state.oldPoints} fill={this.props.fill}>
+          <animate
+            ref={a => this._animate = a}
+            id="polygon-animate"
+            attributeName="points" 
+            from={this.state.oldPoints}
+            to={this.state.newPoints}
+            dur={this.props.duration + "ms"}
+            begin="indefinite" />
+        </polygon>
       </svg>
     )
   }
