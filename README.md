@@ -1,3 +1,6 @@
+# Deprecated
+Refer to new repo: [https://github.com/peteroid/react-polygon](https://github.com/peteroid/react-polygon)
+===
 # react-pentagon
 A simple react add-on to help drawing the svg pentagon.
 
